@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  flashsol:
+    build: .
+    container_name: flashsol
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - SOLANA_RPC_URL=${SOLANA_RPC_URL:-https://api.mainnet-beta.solana.com}
+      - SOLANA_WS_URL=${SOLANA_WS_URL:-wss://api.mainnet-beta.solana.com}
+      - RAYDIUM_ENABLED=${RAYDIUM_ENABLED:-true}
+      - ORCA_ENABLED=${ORCA_ENABLED:-true}
+      - SERUM_ENABLED=${SERUM_ENABLED:-true}
+      - PROFIT_THRESHOLD_PERCENT=${PROFIT_THRESHOLD_PERCENT:-0.2}
+      - TRADE_SIZE_USDC=${TRADE_SIZE_USDC:-100}
+      - MAX_OPPORTUNITIES_PER_MINUTE=${MAX_OPPORTUNITIES_PER_MINUTE:-10}
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+    # Resource limits
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+          cpus: '0.5'
+    # Health check
+    healthcheck:
+      test: ["CMD", "node", "-e", "console.log('Health check passed')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+networks:
+  flashsol-network:
+    driver: bridge
+
+volumes:
+  flashsol-data:
+  flashsol-logs:
