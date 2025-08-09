@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="https://cryptologos.cc/logos/solana-sol-logo.svg?v=023" alt="Solana Logo" width="120">
-</p>
-
 <h1 align="center">FlashSol</h1>
 <p align="center">
   <b>Solana Arbitrage Opportunity Scanner</b><br>
