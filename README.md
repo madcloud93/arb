@@ -16,6 +16,9 @@ You'll need Node.js 18 or higher. I use the free Solana RPC but you might want a
 
 git clone https://github.com/madcloud93/arb.git
 cd arb
+npm install
+npm run build
+npm start
 
 ## Configuration
 
