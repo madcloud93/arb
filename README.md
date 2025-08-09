@@ -1,54 +1,65 @@
-# FlashSol
+<h1 align="center">⚡ FlashSol</h1>
+<p align="center">
+  <b>Real-time Solana Arbitrage Opportunity Scanner</b><br>
+  Monitors prices across multiple DEXes and identifies profitable spreads.<br>
+  <i>Research tool — no private keys, no trading, just data.</i>
+</p>
 
-Solana arbitrage opportunity scanner. Watches prices across different DEXes and finds profitable spreads.
+<p align="center">
+  <a href="https://github.com/madcloud93/arb/stargazers"><img src="https://img.shields.io/github/stars/madcloud93/arb?style=for-the-badge" alt="Stars"></a>
+  <a href="https://github.com/madcloud93/arb/network/members"><img src="https://img.shields.io/github/forks/madcloud93/arb?style=for-the-badge" alt="Forks"></a>
+  <a href="https://github.com/madcloud93/arb/issues"><img src="https://img.shields.io/github/issues/madcloud93/arb?style=for-the-badge" alt="Issues"></a>
+  <a href="https://github.com/madcloud93/arb/blob/main/LICENSE"><img src="https://img.shields.io/github/license/madcloud93/arb?style=for-the-badge" alt="License"></a>
+</p>
 
-Built this to monitor SOL/USDC, ETH/USDC and other pairs on Raydium, Orca and Serum. Doesn't actually trade anything, just shows you where the money is.
+---
 
-## What it does
+## 📌 Overview
+**FlashSol** connects to Solana DEXes — **Raydium**, **Orca**, and **Serum** — to scan for arbitrage opportunities in real time.  
+It calculates potential profits between exchanges for popular pairs like:
 
-Connects to Solana DEXes and compares prices in real-time. When there's a decent spread between exchanges, it logs the opportunity with profit calculations. Pretty useful for spotting trends and understanding market inefficiencies.
+- `SOL/USDC`
+- `ETH/USDC`
+- `BTC/USDC`
+- `USDC/USDT`
 
-Uses WebSockets for live data, caches everything in memory, and exports to CSV if you want to analyze later.
+The tool **does not execute trades** — it’s for research, education, and strategy analysis.
 
-## Setup
+---
 
-You'll need Node.js 18 or higher. I use the free Solana RPC but you might want a paid one if you're hitting rate limits.
+## ✨ Features
+- 🔍 **Live Price Scanning** — via WebSockets for minimal latency.
+- 📊 **Profit Calculations** — based on configurable trade sizes.
+- 📂 **CSV Export** — store opportunities in `opportunities/` for later analysis.
+- 📜 **Logging** — all events saved to `logs/arbitrage.log`.
+- ⚡ **Auto-Reconnect** — stays online even if a DEX API drops.
 
+---
+
+## 🛠️ Tech Stack
+- **Node.js** ≥ 18
+- **Solana Web3.js**
+- **DEX APIs**: Raydium, Orca, Serum
+- WebSockets
+- CSV Writer
+
+---
+
+## 🚀 Getting Started
+
+### 1️⃣ Clone the repo
+```bash
 git clone https://github.com/madcloud93/arb.git
 cd arb
 npm install
 npm run build
-npm start
 
-## Configuration
+SOLANA_RPC_URL=https://your-solana-rpc-endpoint
+PROFIT_THRESHOLD_PERCENT=0.2
+TRADE_SIZE_USDC=100
 
-Main settings are in `.env`:
+Variables:
 
-- `SOLANA_RPC_URL` - your solana endpoint
-- `PROFIT_THRESHOLD_PERCENT` - minimum spread to log (default 0.2%)
-- `TRADE_SIZE_USDC` - calculation amount (default $100)
-
-Currently watches SOL/USDC, ETH/USDC, BTC/USDC and USDC/USDT pairs.
-
-## Output
-
-Creates CSV files in `opportunities/` folder with timestamp, pair, buy/sell DEX, prices, and calculated profits.
-
-Also logs everything to `logs/arbitrage.log` if you want to grep through it later.
-
-## Running it
-
-Just `npm start` and let it run. It'll reconnect automatically if the WebSocket drops.
-
-For Docker:
-```bash
-docker-compose up -d
-```
-
-## Notes
-
-This is read-only - no private keys needed, no actual trading. Just price monitoring.
-
-Sometimes DEX APIs go down or return stale data. The bot handles most of this but don't expect perfect uptime.
-
-If you're getting rate limited, get a better RPC endpoint or reduce the monitoring frequency in the config.
+SOLANA_RPC_URL — Public or paid Solana RPC endpoint.
+PROFIT_THRESHOLD_PERCENT — Minimum spread percentage to log (default: 0.2%).
+TRADE_SIZE_USDC — Trade size for profit calculations (default: $100).
