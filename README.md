@@ -14,15 +14,8 @@ Uses WebSockets for live data, caches everything in memory, and exports to CSV i
 
 You'll need Node.js 18 or higher. I use the free Solana RPC but you might want a paid one if you're hitting rate limits.
 
-```bash
-git clone <repo-url>
-cd flashsol
-npm install
-cp .env.example .env
-# edit .env with your RPC endpoint
-npm run build
-npm start
-```
+git clone https://github.com/madcloud93/arb.git
+cd arb
 
 ## Configuration
 
