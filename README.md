@@ -1,59 +1,75 @@
-<h1 align="center">⚡ FlashSol</h1>
 <p align="center">
-  <b>Real-time Solana Arbitrage Opportunity Scanner</b><br>
+  <img src="https://cryptologos.cc/logos/solana-sol-logo.svg?v=023" alt="Solana Logo" width="120">
+</p>
+
+<h1 align="center">FlashSol</h1>
+<p align="center">
+  <b>Solana Arbitrage Opportunity Scanner</b><br>
   Monitors prices across multiple DEXes and identifies profitable spreads.<br>
-  <i>Research tool — no private keys, no trading, just data.</i>
+  Read-only tool — no trading, no private keys required.
 </p>
 
 <p align="center">
-  <a href="https://github.com/madcloud93/arb/stargazers"><img src="https://img.shields.io/github/stars/madcloud93/arb?style=for-the-badge" alt="Stars"></a>
-  <a href="https://github.com/madcloud93/arb/network/members"><img src="https://img.shields.io/github/forks/madcloud93/arb?style=for-the-badge" alt="Forks"></a>
-  <a href="https://github.com/madcloud93/arb/issues"><img src="https://img.shields.io/github/issues/madcloud93/arb?style=for-the-badge" alt="Issues"></a>
-  <a href="https://github.com/madcloud93/arb/blob/main/LICENSE"><img src="https://img.shields.io/github/license/madcloud93/arb?style=for-the-badge" alt="License"></a>
+  <a href="https://github.com/madcloud93/arb/stargazers">
+    <img src="https://img.shields.io/github/stars/madcloud93/arb?style=for-the-badge" alt="Stars">
+  </a>
+  <a href="https://github.com/madcloud93/arb/network/members">
+    <img src="https://img.shields.io/github/forks/madcloud93/arb?style=for-the-badge" alt="Forks">
+  </a>
+  <a href="https://github.com/madcloud93/arb/issues">
+    <img src="https://img.shields.io/github/issues/madcloud93/arb?style=for-the-badge" alt="Issues">
+  </a>
+  <a href="https://github.com/madcloud93/arb/blob/main/LICENSE">
+    <img src="https://img.shields.io/github/license/madcloud93/arb?style=for-the-badge" alt="License">
+  </a>
 </p>
 
 ---
 
-## 📌 Overview
-**FlashSol** connects to Solana DEXes — **Raydium**, **Orca**, and **Serum** — to scan for arbitrage opportunities in real time.  
-It calculates potential profits between exchanges for popular pairs like:
+## Overview
+FlashSol connects to Solana DEXes — Raydium, Orca, and Serum — to scan for arbitrage opportunities in real time.  
+It calculates potential profits between exchanges for popular pairs such as:
 
-- `SOL/USDC`
-- `ETH/USDC`
-- `BTC/USDC`
-- `USDC/USDT`
+- SOL/USDC
+- ETH/USDC
+- BTC/USDC
+- USDC/USDT
 
-The tool **does not execute trades** — it’s for research, education, and strategy analysis.
-
----
-
-## ✨ Features
-- 🔍 **Live Price Scanning** — via WebSockets for minimal latency.
-- 📊 **Profit Calculations** — based on configurable trade sizes.
-- 📂 **CSV Export** — store opportunities in `opportunities/` for later analysis.
-- 📜 **Logging** — all events saved to `logs/arbitrage.log`.
-- ⚡ **Auto-Reconnect** — stays online even if a DEX API drops.
+This tool is designed for research, education, and market analysis.  
+It does not execute trades.
 
 ---
 
-## 🛠️ Tech Stack
-- **Node.js** ≥ 18
-- **Solana Web3.js**
-- **DEX APIs**: Raydium, Orca, Serum
+## Features
+- Live price scanning using WebSockets for minimal latency.
+- Profit calculations based on configurable trade sizes.
+- CSV export for storing opportunities in the `opportunities/` folder.
+- Logging of all events to `logs/arbitrage.log`.
+- Automatic reconnection if a DEX API drops.
+
+---
+
+## Tech Stack
+- Node.js ≥ 18
+- Solana Web3.js
+- DEX APIs: Raydium, Orca, Serum
 - WebSockets
 - CSV Writer
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
-### 1️⃣ Clone the repo
+### 1. Clone the repository
 ```bash
 git clone https://github.com/madcloud93/arb.git
 cd arb
+
 npm install
+
 npm run build
 
+Create a .env file in the root directory:
 SOLANA_RPC_URL=https://your-solana-rpc-endpoint
 PROFIT_THRESHOLD_PERCENT=0.2
 TRADE_SIZE_USDC=100
@@ -62,4 +78,18 @@ Variables:
 
 SOLANA_RPC_URL — Public or paid Solana RPC endpoint.
 PROFIT_THRESHOLD_PERCENT — Minimum spread percentage to log (default: 0.2%).
-TRADE_SIZE_USDC — Trade size for profit calculations (default: $100).
+TRADE_SIZE_USDC — Trade size in USDC for profit calculations (default: 100).
+
+Running the Scanner
+npm start
+
+Future Updates
+Planned features:
+Solana flash loan integration.
+Cross-chain bridge arbitrage detection.
+Automatic trade execution with MEV protection.
+Expanded token pair monitoring.
+Integration with multiple flash loan providers.
+For collaboration, feature requests, or development work related to flash loans or cross-chain arbitrage, please DM me.
+
+
