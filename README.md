@@ -87,5 +87,5 @@ Automatic trade execution with MEV protection.
 Expanded token pair monitoring.
 Integration with multiple flash loan providers.
 For collaboration, feature requests, or development work related to flash loans or cross-chain arbitrage, please DM me.
-
+discord @mugilcloud
 
